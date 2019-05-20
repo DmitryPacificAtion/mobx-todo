@@ -1,6 +1,7 @@
 import React from "react";
 import TodoField from "./field";
 import TodoList from "./list";
+import { observable, decorate, action } from "mobx";
 
 export interface ITodo {
   id: number;
@@ -12,11 +13,7 @@ interface IState {
   data: ITodo[],
 }
 
-class Todo extends React.Component<{}, IState> {
-  public state: IState = {
-    data: [],
-  }
-
+class Todo extends React.Component {
   public render() {
     const {data} = this.state; 
     return (
@@ -43,12 +40,18 @@ class Todo extends React.Component<{}, IState> {
 
   private handleToggle = (id: number, checked: boolean) => {
     const {data} = this.state;
-    const item = data.find(item => item.id === id);
+    const item = this.state.find(item => item.id === id);
     if (item) {
       item.checked = checked;
       this.setState({data: Object.assign(data, item)});
     }
   }
 }
+
+decorate(Todo, {
+  data: observable,
+  handleToggle: action,
+  handleAddItem: action,
+});
 
 export default Todo;
