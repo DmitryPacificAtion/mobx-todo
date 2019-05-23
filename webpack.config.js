@@ -4,7 +4,6 @@ const package = require('./package.json');
 
 // variables
 const isProduction = process.argv.indexOf('-p') >= 0 || process.env.NODE_ENV === 'production';
-const sourcePath = path.join(__dirname, './src');
 const outPath = path.join(__dirname, './build');
 
 // plugins
@@ -13,9 +12,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  context: sourcePath,
   entry: {
-    app: './index.tsx'
+    first: './first.tsx',
+    app: './src/index.tsx'
   },
   output: {
     path: outPath,
