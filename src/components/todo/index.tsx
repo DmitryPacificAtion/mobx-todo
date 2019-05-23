@@ -13,7 +13,11 @@ interface IState {
   data: ITodo[],
 }
 
-class Todo extends React.Component {
+class Todo extends React.Component<{}, IState> {
+  public state: IState = {
+    data: [],
+  };
+
   public render() {
     const {data} = this.state; 
     return (
@@ -40,18 +44,12 @@ class Todo extends React.Component {
 
   private handleToggle = (id: number, checked: boolean) => {
     const {data} = this.state;
-    const item = this.state.find(item => item.id === id);
+    const item = data.find(item => item.id === id);
     if (item) {
       item.checked = checked;
       this.setState({data: Object.assign(data, item)});
     }
   }
 }
-
-decorate(Todo, {
-  data: observable,
-  handleToggle: action,
-  handleAddItem: action,
-});
 
 export default Todo;
