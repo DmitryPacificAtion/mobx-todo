@@ -8,7 +8,7 @@ interface IProps {
 
 class TodoList extends React.Component<IProps> {
   public render() {
-    const list = this.props.data.map(item => {
+    const list = this.props.data.map((item: ITodo) => {
       return (
         <li key={item.id}>
           <label>

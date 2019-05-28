@@ -1,4 +1,7 @@
 {
     "editor.tabSize": 2,
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "all",
+    "files.exclude": {
+        "**/.vscode": true
+    }
 }

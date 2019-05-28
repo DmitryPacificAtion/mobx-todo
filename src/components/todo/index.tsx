@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import TodoField from "./field";
 import TodoList from "./list";
-import { observable, decorate, action } from "mobx";
+// import { observable, decorate, action } from "mobx";
 
 export interface ITodo {
   id: number;
